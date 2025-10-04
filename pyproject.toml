@@ -1,0 +1,9 @@
+[project]
+name = "ecovision"
+version = "0.1.0"
+description = "Modelo de Inteligencia Artificial para la detección y segmentación de latas y botellas como residuos contaminantes del medio ambiente."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mlflow>=3.4.0",
+]
