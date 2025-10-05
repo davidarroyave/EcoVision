@@ -2,7 +2,7 @@
 ## Sistema de inteligencia artificial basado en visión por computadora para la detección y segmentación de latas y botellas
 
 [![Python Version](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://python.org)
-[![TensorFlow](https://img.shields.io/badge/tensorflow-CPU%2B-orange.svg)](https://tensorflow.org)
+[![PyTorch](https://img.shields.io/badge/pytorch%2B-orange.svg)](https://pytorch.org)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache2.0-yellow.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://docker.com)
 
@@ -93,7 +93,7 @@ ECOVISION/
 ## Requisitos
 
 ### Versión de Python
-- **Python**: 3.11 para mejor compatibilidad con Tensorflow-cpu y YOLOv12
+- **Python**: 3.11 para mejor compatibilidad con TorchVision y YOLOv12
 
 ### 💻 Requisitos del Sistema
 - **RAM**: Mínimo 4GB (recomendado 8GB o superior)
@@ -170,8 +170,7 @@ pip install -r requirements.txt
 
 #### 3. Verificar instalación
 ```bash
-python -c "import tensorflow as tf; print(f'TensorFlow: {tf.__version__}')"
-python -c "import cv2; print(f'OpenCV: {cv2.__version__}')"
+python -c "import torch; print(f'Torch: {torch.__version__}')"
 ```
 
 ### Verificación de Instalación
