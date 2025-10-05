@@ -1,6 +1,6 @@
 # load_model.py
 """
-Módulo para carga de modelo PyTorch YOLOv12
+Módulo para carga de modelo PyTorch YOLOv8
 """
 import os
 from ultralytics import YOLO
@@ -10,7 +10,7 @@ MODEL_PATH = "src/models/best_latas.pt" #Reemplazar por modelo final.
 
 @st.cache_resource
 def load_pytorch_model(path: str = MODEL_PATH):
-    """Carga el modelo YOLOv12 entrenado en PyTorch."""
+    """Carga el modelo YOLOv8 entrenado en PyTorch."""
     if not os.path.isfile(path):
         st.warning(f"🔍 Modelo no encontrado en '{path}'.")
         return None

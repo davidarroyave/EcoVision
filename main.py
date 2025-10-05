@@ -1,6 +1,6 @@
 # main_ecovision.py
 '''
-# Aplicación Streamlit para EcoVision - Detección de latas y botellas con YOLOv12
+# Aplicación Streamlit para EcoVision - Detección de latas y botellas con YOLOv8
 # Autores: Jose Luis Martinez Diaz, Juan David Arroyave Ramirez, Neiberth Aponte Aristizabal, Stevens Ricardo Bohorquez Ruiz
 # Fecha: 2025-10
 # Licencia: Apache 2.0
@@ -50,7 +50,7 @@ sidebar_info()
 st.title("♻️EcoVision👁️")
 st.markdown(
     """
-Bienvenido a **EcoVision**: Detección de latas y botellas mediante PyTorch YOLOv12.
+Bienvenido a **EcoVision**: Detección de latas y botellas mediante PyTorch YOLOv8.
 
 - **Cámara**: Detección en tiempo real
 - **Métricas**: Precisión, recall, mAP
@@ -106,11 +106,11 @@ with tab_report:
     st.subheader("🧾 Informe del Proyecto")
     st.markdown("## 1. Introducción")
     st.markdown(
-        "EcoVision es un sistema basado en vision por computadora **PyTorch** y YOLOv12 para detectar latas y botellas en tiempo real."
+        "EcoVision es un sistema basado en vision por computadora **PyTorch** y YOLOv8 para detectar latas y botellas en tiempo real."
     )
     st.markdown("## 2. Tecnologías Utilizadas")
     st.markdown(
-        "- **Framework:** PyTorch\n- **Modelo:** YOLOv12 (Ultralytics)\n- **Captura:** OpenCV\n- **Interfaz:** Streamlit"
+        "- **Framework:** PyTorch\n- **Modelo:** YOLOv8 (Ultralytics)\n- **Captura:** OpenCV\n- **Interfaz:** Streamlit"
     )
     st.markdown("## 3. Funcionamiento")
     st.markdown(

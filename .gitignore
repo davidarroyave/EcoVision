@@ -213,3 +213,5 @@ docker/README.md
 # UV
 uv.lock
 
+#Jupyter Tests
+notebooks/test.ipynb

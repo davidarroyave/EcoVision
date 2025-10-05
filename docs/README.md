@@ -17,25 +17,25 @@
 **Stevens Ricardo Bohorquez Ruiz** Codigo-UAO: ***2250760***
 
 ##  Descripción del Proyecto
-La gestión de residuos sólidos representa un desafío crítico en Colombia, donde la acumulación de latas y botellas plásticas contamina ecosistemas acuáticos y terrestres y eleva costos operativos de recolección. Este trabajo propone un sistema de inteligencia artificial basado en visión por computadora y Deep Learning para la detección y segmentación de latas y botellas, entrenado con YOLOv12 y desplegado
+La gestión de residuos sólidos representa un desafío crítico en Colombia, donde la acumulación de latas y botellas plásticas contamina ecosistemas acuáticos y terrestres y eleva costos operativos de recolección. Este trabajo propone un sistema de inteligencia artificial basado en visión por computadora y Deep Learning para la detección y segmentación de latas y botellas, entrenado con YOLOv8 y desplegado
 mediante una interfaz Streamlit. Los objetivos incluyen la recolección y anotación de un dataset diverso en Roboflow, el entrenamiento y optimización del modelo con técnicas de Data Augmentation y ajuste de hiperparámetros, la validación en entornos controlados usando métricas de precisión y graficas de perdida. El alcance comprende el desarrollo del modelo, la aplicación web, la documentación técnica y
 pruebas de campo con videos de Playas, orillas de ríos, zonas urbanas, o CCTV libres de derechos de autor que estén disponibles para uso académico sin fines comerciales o en datasets públicos o los generados por
 EcoVision, excluyendo la recolección manual de datos en tiempo real, la provisión de infraestructura de hardware, mantenimiento o soporte continuo post-entrega y desarrollo de modelos adicionales distintos a
-YOLOv12. Este enfoque aporta datos objetivos para optimizar rutas de recolección, apoyar iniciativas de economía circular y facilitar la toma de decisiones en autoridades ambientales y redes de recicladores
+YOLOv8. Este enfoque aporta datos objetivos para optimizar rutas de recolección, apoyar iniciativas de economía circular y facilitar la toma de decisiones en autoridades ambientales y redes de recicladores
 
 ### Objetivos del Proyecto
 
 **Objetivo General**: Desarrollar un sistema de inteligencia artificial basado en visión por computadora para la detección y segmentación de latas y botellas, con el fin de apoyar la identificación automatizada
 de contaminantes y fortalecer estrategias de gestión ambiental.
 
- **Objetivo Específico**: Entrenar y evaluar un modelo de visión por computadora para la detección y segmentación de objetos utilizando YoloV12.
+ **Objetivo Específico**: Entrenar y evaluar un modelo de visión por computadora para la detección y segmentación de objetos utilizando YOLOv8.
 
  **Objetivo Técnico**: Desplegar el sistema de inteligencia artificial basado en visión por computadora mediante la plataforma Streamlit, desarrollando una interfaz web interactiva que permita la carga de imágenes, videos, activación de la cámara para la utilización del modelo en tiempo real.
 
 
 ### Metodología
 
-- **Modelo**: YOLOv12 para detección de objetos en tiempo real que utiliza una arquitectura de redes neuronales convolucionales (CNN).
+- **Modelo**: YOLOv8 para detección de objetos en tiempo real que utiliza una arquitectura de redes neuronales convolucionales (CNN).
 - **Entrada**: Imágenes o videos de latas y botellas.
 - **Preprocesamiento**: Entrenamiento de imagenes relacionadas, proceso de normalización, y fine-tuning.
 - **Visualización**: Camara en tiempo real o inserción manual de imagenes o videos relacionados para explicabilidad del modelo
@@ -62,7 +62,7 @@ ECOVISION/
 |         ├── ▶PENDIENTE.py                           # codigo original, alto acople y sin cohesion
 |         ├── ▶PENDIENTE.py                           #
 |         ├── ▶integrator.py                          # Módulo integrador del pipeline
-|         ├── ▶load_model.py                          # Carga del modelo Ecovision-YOLOv12
+|         ├── ▶load_model.py                          # Carga del modelo Ecovision-YOLOv8
 |         ├── ▶preprocess_img.py                      # Preprocesamiento de imágenes
 |         ├── ▶read_img.py                            # Lectura de imágenes JPG/PNG
 |   └── 📁 features
@@ -93,7 +93,7 @@ ECOVISION/
 ## Requisitos
 
 ### Versión de Python
-- **Python**: 3.11 para mejor compatibilidad con TorchVision y YOLOv12
+- **Python**: 3.11 para mejor compatibilidad con TorchVision y YOLOv8
 
 ### 💻 Requisitos del Sistema
 - **RAM**: Mínimo 4GB (recomendado 8GB o superior)
@@ -191,7 +191,7 @@ python main.py --test
 ```
 ## 🔬 Tipos de residuos de latas y botellas Detectados
 
-El modelo **YOLOv12** está entrenado para clasificar las siguientes condiciones:
+El modelo **YOLOv8** está entrenado para clasificar las siguientes condiciones:
 
 | Clase | Código | Descripción | Precisión |
 |-------|--------|-------------|-----------|
@@ -239,12 +239,41 @@ El modelo **YOLOv12** está entrenado para clasificar las siguientes condiciones
 - 📂 Carga de `models/.pt`
 - ✅ Verificación de existencia de archivo
 - 🛡️ Manejo de errores de compatibilidad
-- 🔍 Validación de arquitectura (YOLOv12)
+- 🔍 Validación de arquitectura (YOLOv8)
 
 ---
 
-### 🏗️ Arquitectura del Modelo YOLOv12
+### 🏗️ Arquitectura del Modelo YOLOv8
 
+```bash
+
+               from  n    params  module                                       arguments                     
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]                 
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]                
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]             
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]             
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]               
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]           
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]              
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]           
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]                 
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]                 
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]                  
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]                 
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]                 
+ 22        [15, 18, 21]  1    897664  ultralytics.nn.modules.head.Detect           [80, [64, 128, 256]]          
+Model summary: 129 layers, 3,157,200 parameters, 3,157,184 gradients, 8.9 GFLOPs
+
+```
 ---
 
 ## ⚖️ Licencia

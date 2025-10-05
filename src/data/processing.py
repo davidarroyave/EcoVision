@@ -1,6 +1,6 @@
 # processing.py
 """
-Módulo para procesamiento de frames con modelo YOLOv12.
+Módulo para procesamiento de frames con modelo YOLOv8.
 """
 import cv2
 
@@ -10,7 +10,7 @@ def process_frame(frame, model, conf: float):
 
     Args:
         frame (ndarray): Imagen RGB.
-        model: Objeto YOLOv12.
+        model: Objeto YOLOv8.
         conf (float): Umbral de confianza.
 
     Returns:
