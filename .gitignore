@@ -8,8 +8,8 @@ __pycache__/
 
 # Salidas de ejecución MLFlow
 mlruns/
-#datasets/
-#models/
+datasets/
+models/
 outputs/
 runs/
 
