@@ -42,7 +42,7 @@ def sidebar_info():
         st.info("Sistema de IA en PyTorch para detección de latas y botellas.")
         st.markdown("---")
         year = datetime.datetime.now().year
-        st.markdown(f"©{year} Equipo EcoVision. Licencia MIT.")
+        st.markdown(f"©{year} Equipo EcoVision. Licencia Apache 2.0")
 
 sidebar_info()
 
