@@ -50,3 +50,8 @@ docker-run:
 
 clean:
 	rm -rf __pycache__ .pytest_cache
+
+# Ejecutar solo tests de carga del modelo
+test-modelo:
+	set PYTHONPATH=.&& uv run pytest -v tests/test_load_model.py
+
