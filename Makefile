@@ -55,3 +55,5 @@ clean:
 test-modelo:
 	set PYTHONPATH=.&& uv run pytest -v tests/test_load_model.py
 
+test-proceso:
+	set PYTHONPATH=.&& uv run pytest -v tests/test_processing.py
