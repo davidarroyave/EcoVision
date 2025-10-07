@@ -16,7 +16,7 @@ dependencies = [
   "pillow>=10.0.0",
   "matplotlib>=3.7.0",
   "seaborn>=0.12.0",
-  "mlflow>=3.4.0"
+  "mlflow>=3.4.0",
   "dvc",
-  "azure-storage-blob",
+  "azure-storage-blob"
 ]
