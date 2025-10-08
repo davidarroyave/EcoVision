@@ -243,6 +243,17 @@ El modelo **YOLOv8** está entrenado para clasificar las siguientes condiciones:
 
 ---
 
+## 🚀 Ejecuciones
+- 🖥 Abrir MLflow UI: Terminal en `C:\EcoVision`, activar `.\venv\Scripts\activate`, ejecutar `make mlflow`, abrir [http://localhost:5000](http://localhost:5000).  
+- 🧪 Test carga del modelo: `make test-modelo` → verifica rutas inexistentes y carga simulada con mocks.  
+- 🧪 Test proceso del modelo: `make test-proceso` → valida `process_frame` sin modelo y con mocks.  
+- 📌 YOLOv8: versión estable y compatible con Python/Roboflow; versiones recientes aún en adopción temprana.  
+- 📊 Tracking MLflow: configurar `EPOCHS = 5` en `Makefile`, ejecutar `make train`; resultados en `runs/segment/<run_name>`.  
+- 💾 DVC: instalar `pip install dvc dvc-azure`, `dvc init`, configurar remote Azure (`dvc remote add/modify`), agregar/subir archivos (`dvc add --to-remote` o `dvc push`), otros comandos: `dvc remote list`, `dvc remote default`, `dvc pull`.
+
+
+---
+
 ### 🏗️ Arquitectura del Modelo YOLOv8
 
 ```bash
@@ -362,5 +373,5 @@ dic. de 2021. arXiv: 2507.11301. dirección: https://arxiv.org/html/2507.11301v1
 2025, sep. de 2025. dirección: https: //www.ultralytics.com/es/blog/greener-future-throughvision-ai-and-ultralyticsyolo
 
 
-**Última Actualización**: Octubre 4, 2025
+**Última Actualización**: Octubre 8, 2025
 **Estado del Proyecto**: Producción en desarrollo 🟡  
