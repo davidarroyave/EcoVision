@@ -6,6 +6,18 @@ __pycache__/
 # C extensions
 *.so
 
+# Salidas de ejecución MLFlow
+mlruns/
+datasets/
+models/
+outputs/
+runs/
+
+# DVC (solo archivos locales o de caché)
+.dvc/config.local
+.dvc/tmp/
+.dvc/cache/
+
 # Distribution / packaging
 .Python
 build/
