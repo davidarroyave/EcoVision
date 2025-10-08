@@ -11,7 +11,7 @@ IMGSZ = 640
 RUN_NAME = EcoVision_RunGrupal
 APP    = main.py
 REQ    = requirements.txt
-IMAGE  = ecovision:latest
+IMAGE  = docker-ecovision
 PORT   = 8501
 MLFLOW_PORT = 5000
 # Para el registro del modelo en MLflow
@@ -48,9 +48,15 @@ docker-build:
 	docker build -t $(IMAGE) .
 	echo "Imagen $(IMAGE) construida"
 
-docker-run:
-	docker run -p $(PORT):$(PORT) --name ecovision-app $(IMAGE)
+docker:
+	docker run -d -p 8501:8501 docker-ecovision:latest
 
+docker-status:
+	docker ps
+
+docker-stop:
+	docker stop 3b4e32c640be
+	
 clean:
 	rm -rf __pycache__ .pytest_cache
 
