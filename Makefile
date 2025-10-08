@@ -14,6 +14,9 @@ REQ    = requirements.txt
 IMAGE  = ecovision:latest
 PORT   = 8501
 MLFLOW_PORT = 5000
+# Para el registro del modelo en MLflow
+RUN_ID = 8a0cd13bcab8436096cc46ada7584bce
+MODEL_NAME = EcoVisionModel
 
 all: train
 

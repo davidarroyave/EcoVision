@@ -19,6 +19,7 @@ def main():
     args = parse_args()
 
     mlflow.set_tracking_uri("file:./mlruns")  # Tracking local
+    mlflow.set_experiment("EcoVision")        # Elegir experimento
     with mlflow.start_run(run_name=args.run_name) as run:
         # Log parámetros
         mlflow.log_param("epochs", args.epochs)
@@ -35,13 +36,13 @@ def main():
             imgsz=args.imgsz,
             name=args.run_name,
         )
-# --- Log de métricas de manera segura ---
+
+        # --- Log de métricas de manera segura ---
         try:
             if hasattr(results.box, "loss") and len(results.box.loss) > 0:
                 mlflow.log_metric("box_loss", float(results.box.loss[-1]))
             if hasattr(results.seg, "loss") and len(results.seg.loss) > 0:
                 mlflow.log_metric("seg_loss", float(results.seg.loss[-1]))
-            # Verificar que map sea dict antes de acceder
             if hasattr(results.box, "map") and isinstance(results.box.map, dict) and 0.5 in results.box.map:
                 mlflow.log_metric("mAP50", float(results.box.map[0.5]))
         except Exception as e:
@@ -49,6 +50,14 @@ def main():
 
         # Guardar modelo entrenado como artefacto
         mlflow.pytorch.log_model(model.model, name="model")
+
+        # --- Log del best.pt generado por YOLOv8 ---
+        best_weights_path = os.path.join("runs", "segment", args.run_name, "weights", "best.pt")
+        if os.path.exists(best_weights_path):
+            mlflow.log_artifact(best_weights_path, artifact_path="model")
+            print(f"✅ best.pt loggeado en MLflow bajo artifact_path='model'")
+        else:
+            print("⚠️ best.pt no encontrado, no se loggeo en MLflow")
 
         # --- Gráfico de pérdidas ---
         plt.figure(figsize=(8,6))
