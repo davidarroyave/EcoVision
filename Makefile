@@ -6,7 +6,7 @@
 MODELO = models/yolov8s-seg.pt
 MODEL = src/data/models/
 DATA = datasets/20251007v1/data.yaml
-EPOCS = 1
+EPOCHS = 1
 IMGSZ = 640
 RUN_NAME = EcoVision_Run
 APP    = main.py
@@ -19,7 +19,7 @@ all: train
 
 # Entrenar modelo
 train:
-	python src/train.py --model $(MODELO) --data $(DATA) --epochs $(EPOCHS) --imgsz $(IMGSZ) --run_name "$(RUN_NAME)"
+	python src/data/train.py --model $(MODELO) --data $(DATA) --epochs $(EPOCHS) --imgsz $(IMGSZ) --run_name "$(RUN_NAME)"
 
 # Abrir MLflow UI
 mlflow:
@@ -31,8 +31,8 @@ cleanml:
 	rm -rf runs mlruns
 
 register:
-	@echo "Registrando modelo en MLflow..."
-	@python src/data/register_model.py
+	@echo "Registrando modelo en MLflow, espera..."
+	@python src/data/register.py --run_id $(RUN_ID) --model_name $(MODEL_NAME)
 
 #Streamlit
 run:
