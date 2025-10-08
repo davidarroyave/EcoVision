@@ -5,6 +5,19 @@ import mlflow
 import mlflow.pytorch
 import matplotlib.pyplot as plt
 import os
+import torch
+
+def get_optimal_device():
+    """Detecta automáticamente el mejor dispositivo (GPU si disponible, CPU si no)"""
+    if torch.cuda.is_available():
+        device = 'cuda'
+        gpu_name = torch.cuda.get_device_name(0)
+        gpu_memory = torch.cuda.get_device_properties(0).total_memory / 1024**3
+        print(f"🚀 GPU detectada: {gpu_name} ({gpu_memory:.1f}GB) - Aceleración activada")
+    else:
+        device = 'cpu'
+        print("💻 Usando CPU (normal para desarrollo)")
+    return device
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Entrenamiento YOLOv8 con MLflow tracking")
@@ -17,24 +30,29 @@ def parse_args():
 
 def main():
     args = parse_args()
+    
+    # Detectar dispositivo óptimo automáticamente
+    device = get_optimal_device()
 
     mlflow.set_tracking_uri("file:./mlruns")  # Tracking local
     mlflow.set_experiment("EcoVision")        # Elegir experimento
     with mlflow.start_run(run_name=args.run_name) as run:
-        # Log parámetros
+        # Log parámetros (incluyendo dispositivo usado)
         mlflow.log_param("epochs", args.epochs)
         mlflow.log_param("img_size", args.imgsz)
         mlflow.log_param("data", args.data)
+        mlflow.log_param("device", device)
 
         # Cargar modelo base
         model = YOLO(args.model)
 
-        # Entrenamiento
+        # Entrenamiento con dispositivo óptimo
         results = model.train(
             data=args.data,
             epochs=args.epochs,
             imgsz=args.imgsz,
             name=args.run_name,
+            device=device,  # Usa GPU automáticamente si está disponible
         )
 
         # --- Log de métricas de manera segura ---
