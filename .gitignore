@@ -220,5 +220,11 @@ __marimo__/
 # UV
 uv.lock
 
+# YOLO downloaded models
+yolo*.pt
+*.pt
+loss_plot.png
+yolo11n.pt
+
 #Jupyter Tests
 notebooks/test.ipynb
