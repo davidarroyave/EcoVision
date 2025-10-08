@@ -8,14 +8,14 @@ MODEL = src/data/models/
 DATA = datasets/20251007v1/data.yaml
 EPOCHS = 1
 IMGSZ = 640
-RUN_NAME = EcoVision_Run
+RUN_NAME = EcoVision_RunGrupal
 APP    = main.py
 REQ    = requirements.txt
 IMAGE  = ecovision:latest
 PORT   = 8501
 MLFLOW_PORT = 5000
 # Para el registro del modelo en MLflow
-RUN_ID = 8a0cd13bcab8436096cc46ada7584bce
+RUN_ID = 810c30379124430cacfbd1b9294e957d
 MODEL_NAME = EcoVisionModel
 
 all: train
