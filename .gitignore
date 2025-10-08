@@ -214,13 +214,8 @@ marimo/_lsp/
 __marimo__/
 
 # models
-src/models/best_latas.pt
+#src/models/best_latas.pt
 
-#Docker
-docker/docker-compose.yml
-docker/Dockerfile
-docker/dockerignore
-docker/README.md
 
 # UV
 uv.lock
