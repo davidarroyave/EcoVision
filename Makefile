@@ -40,20 +40,20 @@ run:
 	streamlit run main.py
 
 #Docker
-.PHONY: install run docker-build docker-run clean
+.PHONY: all train mlflow cleanml run docker-build docker docker-status docker-stop clean test-modelo test-proceso
 
 docker-build:
-	docker build -t $(IMAGE) .
+	docker build -t $(IMAGE):latest -f docker/Dockerfile .
 	echo "Imagen $(IMAGE) construida"
 
 docker:
-	docker run -d -p 8501:8501 docker-ecovision:latest
+	docker run -d -p 8501:8501 $(IMAGE):latest
 
 docker-status:
 	docker ps
 
 docker-stop:
-	docker stop 3b4e32c640be
+	docker stop 6b82d5c6b3b5
 	
 clean:
 	rm -rf __pycache__ .pytest_cache
