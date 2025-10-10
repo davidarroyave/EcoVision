@@ -8,34 +8,32 @@ MODEL = src/data/models/
 DATA = datasets/20251007v1/data.yaml
 EPOCHS = 1
 IMGSZ = 640
-RUN_NAME = EcoVision_RunConGPU3050
+RUN_NAME = EcoVision_Prueba_Register
 APP    = main.py
 REQ    = requirements.txt
 IMAGE  = docker-ecovision
 PORT   = 8501
 MLFLOW_PORT = 5000
 # Para el registro del modelo en MLflow
-RUN_ID = 810c30379124430cacfbd1b9294e957d
-MODEL_NAME = EcoVisionModel
+RUN_ID = 6e544580f9744497a274832cb3af07e1 
+MODEL_NAME = EcoVisionModel10102025v1
+ARTIFACT_PATH := weights_model
 
 all: train
 
 # Entrenar modelo
 train:
-	python src/data/train.py --model $(MODELO) --data $(DATA) --epochs $(EPOCHS) --imgsz $(IMGSZ) --run_name "$(RUN_NAME)"
+	python src/data/train.py --model $(MODELO) --data $(DATA) --epochs $(EPOCHS) --imgsz $(IMGSZ) --run_name "$(RUN_NAME)" --project ./runs
 
 # Abrir MLflow UI
 mlflow:
 	mlflow ui --backend-store-uri file:./mlruns --port $(MLFLOW_PORT)
-
 	
 # Limpiar artefactos de entrenamiento
 cleanml:
-	rm -rf runs mlruns
-
-register:
-	@echo "Registrando modelo en MLflow, espera..."
-	@python src/data/register.py --run_id $(RUN_ID) --model_name $(MODEL_NAME)
+	if exist mlruns rmdir /s /q mlruns
+	if exist loss_plot.png del /q loss_plot.png
+	if exist runs rmdir /s /q runs
 
 #Streamlit
 run:

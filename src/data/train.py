@@ -26,6 +26,7 @@ def parse_args():
     parser.add_argument("--epochs", type=int, default=1, help="Número de épocas")
     parser.add_argument("--imgsz", type=int, default=640, help="Tamaño de imagen")
     parser.add_argument("--run_name", type=str, default="EcoVision_Run", help="Nombre del run en MLflow")
+    parser.add_argument("--project", type=str, default="./runs", help="Ruta de la carpeta de proyecto para guardar los resultados")
     return parser.parse_args()
 
 def main():
@@ -35,7 +36,7 @@ def main():
     device = get_optimal_device()
 
     mlflow.set_tracking_uri("file:./mlruns")  # Tracking local
-    mlflow.set_experiment("EcoVision")        # Elegir experimento
+    mlflow.set_experiment("EcoVision Nuevo")        # Elegir experimento
     with mlflow.start_run(run_name=args.run_name) as run:
         # Log parámetros (incluyendo dispositivo usado)
         mlflow.log_param("epochs", args.epochs)
@@ -52,6 +53,7 @@ def main():
             epochs=args.epochs,
             imgsz=args.imgsz,
             name=args.run_name,
+            project=args.project,
             device=device,  # Usa GPU automáticamente si está disponible
         )
 
@@ -66,14 +68,21 @@ def main():
         except Exception as e:
             print(f"⚠️ No se pudieron loggear algunas métricas: {e}")
 
-        # Guardar modelo entrenado como artefacto
-        mlflow.pytorch.log_model(model.model, name="model")
+        # Ruta del mejor peso
+        best_weights_path = os.path.join(args.project, args.run_name, "weights", "best.pt")
+        print(f"\nEntrenamiento finalizado. Run ID: {run.info.run_id}")
 
-        # --- Log del best.pt generado por YOLOv8 ---
-        best_weights_path = os.path.join("runs", "segment", args.run_name, "weights", "best.pt")
         if os.path.exists(best_weights_path):
-            mlflow.log_artifact(best_weights_path, artifact_path="model")
-            print(f"✅ best.pt loggeado en MLflow bajo artifact_path='model'")
+            # Log del archivo best.pt
+            mlflow.log_artifact(best_weights_path, artifact_path="weights")
+
+            # --- Log y registro en Registry en un solo paso ---
+            mlflow.pytorch.log_model(
+                pytorch_model=model.model,
+                artifact_path="weights_model",
+                registered_model_name="EcoVisionModel"  # Registro automático
+            )
+            print("✅ Modelo loggeado y registrado correctamente en MLflow Registry")
         else:
             print("⚠️ best.pt no encontrado, no se loggeo en MLflow")
 
@@ -92,7 +101,7 @@ def main():
         mlflow.log_artifact(loss_plot_path)
         plt.close()
 
-    print(f"✅ Entrenamiento finalizado. Run ID: {run.info.run_id}")
+    print(f"✅ Entrenamiento y logueo completados. Run ID: {run.info.run_id}")
 
 if __name__ == "__main__":
     main()
