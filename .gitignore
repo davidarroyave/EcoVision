@@ -9,9 +9,9 @@ __pycache__/
 # Salidas de ejecución MLFlow
 mlruns/
 datasets/
-models/
+#models/
 outputs/
-runs/
+#runs/
 
 # DVC (solo archivos locales o de caché)
 .dvc/config.local
@@ -218,11 +218,11 @@ __marimo__/
 
 
 # UV
-uv.lock
+#uv.lock
 
 # YOLO downloaded models
 yolo*.pt
-*.pt
+#*.pt
 loss_plot.png
 yolo11n.pt
 
