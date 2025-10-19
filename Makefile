@@ -6,21 +6,20 @@
 MODELO = models/yolov8s-seg.pt
 MODEL = src/data/models/
 DATA = datasets/20251007v1/data.yaml
-EPOCHS = 1
+EPOCHS = 100
 IMGSZ = 640
-RUN_NAME = EcoVision_Prueba_Register
+RUN_NAME = EcoVision
 APP    = main.py
 REQ    = requirements.txt
-IMAGE  = docker-ecovision
+IMAGE  = docker-latvision
 PORT   = 8501
 MLFLOW_PORT = 5000
 # Para el registro del modelo en MLflow
 RUN_ID = 6e544580f9744497a274832cb3af07e1 
-MODEL_NAME = EcoVisionModel10102025v1
+MODEL_NAME = EcoVisionModel19102025v1
 ARTIFACT_PATH := weights_model
 # Organizacion del python path para tests.
 PYTHONPATH := $(CURDIR)/src
-
 
 all: train
 
@@ -56,7 +55,7 @@ docker-status:
 	docker ps
 
 docker-stop:
-	docker stop 6b82d5c6b3b5
+	docker stop bdef2d83e2834848f5f467933285262923eb2ec61f50fdcc8255e82cad0892b3
 	
 clean:
 	rm -rf __pycache__ .pytest_cache
@@ -70,4 +69,4 @@ test-proceso:
 
 # Ejecutar todos los tests
 test-all:
-	PYTHONPATH=$(PYTHONPATH) uv run pytest -v tests/
+	set PYTHONPATH=$(PYTHONPATH)&& uv run pytest -v tests/

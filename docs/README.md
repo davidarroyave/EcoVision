@@ -1,5 +1,5 @@
-# EcoVision: 
-## Sistema de inteligencia artificial basado en visión por computadora para la detección y segmentación de latas y botellas
+# LatVision: https://www.ecovision.lat/
+## Sistema de inteligencia artificial basado en visión por computadora para la detección de residuos contaminantes
 
 [![Python Version](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/pytorch%2B-orange.svg)](https://pytorch.org)
@@ -7,14 +7,15 @@
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://docker.com)
 
 
-##  Autores
-**Jose Luis Martinez Diaz** Codigo-UAO: ***2247574***
+##  Desarrolladores / Especialistas en Inteligencia Artificial
 
-**Juan David Arroyave Ramirez** Codigo-UAO: ***2250424***
+**Stevens Ricardo Bohorquez Ruiz** 
 
-**Neiberth Aponte Aristizabal** Codigo-UAO: ***2251022*** 
+**Jose Luis Martinez Diaz** 
 
-**Stevens Ricardo Bohorquez Ruiz** Codigo-UAO: ***2250760***
+**Juan David Arroyave Ramirez** 
+
+**Neiberth Aponte Aristizabal** 
 
 ##  Descripción del Proyecto
 La gestión de residuos sólidos representa un desafío crítico en Colombia, donde la acumulación de latas y botellas plásticas contamina ecosistemas acuáticos y terrestres y eleva costos operativos de recolección. Este trabajo propone un sistema de inteligencia artificial basado en visión por computadora y Deep Learning para la detección y segmentación de latas y botellas, entrenado con YOLOv8 y desplegado
@@ -373,5 +374,6 @@ dic. de 2021. arXiv: 2507.11301. dirección: https://arxiv.org/html/2507.11301v1
 2025, sep. de 2025. dirección: https: //www.ultralytics.com/es/blog/greener-future-throughvision-ai-and-ultralyticsyolo
 
 
-**Última Actualización**: Octubre 8, 2025
+**Última Actualización**: Octubre 19, 2025
 **Estado del Proyecto**: Producción en desarrollo 🟡  
+
