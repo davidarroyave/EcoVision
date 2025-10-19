@@ -374,6 +374,6 @@ dic. de 2021. arXiv: 2507.11301. dirección: https://arxiv.org/html/2507.11301v1
 2025, sep. de 2025. dirección: https: //www.ultralytics.com/es/blog/greener-future-throughvision-ai-and-ultralyticsyolo
 
 
-**Última Actualización**: Octubre 8, 2025
+**Última Actualización**: Octubre 19, 2025
 **Estado del Proyecto**: Producción en desarrollo 🟡  
 
