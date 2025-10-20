@@ -34,7 +34,7 @@ show_logo()
 def sidebar_info():
     with st.sidebar:
         st.title("💻 Especialistas en Inteligencia Artificial")
-        st.subheader("Desarrolladores:")
+        st.subheader("Desarrolladores =")
         st.markdown("DevOps / MLOps")
         st.markdown("Stevens Bohorquez Ruiz")
         st.markdown("Juan David Arroyave Ramirez")
